@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Manager</title>
+</head>
+<body>
+    <h1>User Manager</h1>
+
+    <h2>Add User</h2>
+    <form action="/add" method="post">
+        Name: <input name="name"><br>
+        Roll No: <input name="roll_no"><br>
+        Age: <input name="age" type="number"><br>
+        <input type="submit" value="Add">
+    </form>
+
+    <h2>Search User by Name</h2>
+    <form action="/search" method="post">
+        Name: <input name="name"><br>
+        <input type="submit" value="Search">
+    </form>
+
+    {% if search_results %}
+    <h2>Search Results</h2>
+    <ul>
+        {% for user in search_results %}
+            <li>{{ user.name }} | Roll No: {{ user.roll_no }} | Age: {{ user.age }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <h2>Delete User by Name</h2>
+    <form action="/delete" method="post">
+        Name: <input name="name"><br>
+        <input type="submit" value="Delete">
+    </form>
+
+    <h2>All Users</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.name }} | Roll No: {{ user.roll_no }} | Age: {{ user.age }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
